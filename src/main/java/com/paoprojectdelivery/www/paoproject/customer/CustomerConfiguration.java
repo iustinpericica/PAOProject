@@ -17,17 +17,21 @@ public class CustomerConfiguration {
             Customer c1 = new Customer(
                     1L,
                     "Iustin",
-                    "iustinpericica@yahoo.com",
-                    "0741198606",
-                    21
+                    "Pericica",
+                    LocalDate.of(2001, 10, 10),
+                    "M",
+                    "pass",
+                    "iustinpericica@yahoo.com"
             );
 
             Customer c2 = new Customer(
                     2L,
-                    "Andreea",
-                    "andreea@yahoo.com",
-                    "0741198900",
-                    19
+                    "Iustin",
+                    "Pericica",
+                    LocalDate.of(2001, 10, 10),
+                    "M",
+                    "pass",
+                    "iustinpericica2@yahoo.com"
             );
             repository.saveAll(List.of(c1, c2));
         };

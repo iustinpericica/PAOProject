@@ -1,4 +1,4 @@
-package com.paoprojectdelivery.www.paoproject.customer;
+package com.paoprojectdelivery.www.paoproject.worker;
 
 import com.paoprojectdelivery.www.paoproject.utils.Person;
 
@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table
-public class Customer extends Person {
+public class Worker extends Person {
     @Id
     @SequenceGenerator(
             name = "customer_seq",
@@ -19,21 +19,32 @@ public class Customer extends Person {
             generator = "customer_seq"
     )
     private Long id;
+    private float salary;
 
-    public Customer(Long id) {
+    public Worker(Long id) {
         this.id = id;
     }
 
-    public Customer(String firstName, String lastName, LocalDate dateOfBirth, String gender, String password, String emailAddress) {
+    public Worker(String firstName, String lastName, LocalDate dateOfBirth, String gender, String password, String emailAddress, float salary) {
         super(firstName, lastName, dateOfBirth, gender, password, emailAddress);
+        this.salary = salary;
     }
 
-    public Customer(Long id, String firstName, String lastName, LocalDate dateOfBirth, String gender, String password, String emailAddress) {
+    public float getSalary() {
+        return salary;
+    }
+
+    public void setSalary(float salary) {
+        this.salary = salary;
+    }
+
+    public Worker(Long id, String firstName, String lastName, LocalDate dateOfBirth, String gender, String password, String emailAddress, float salary) {
         super(firstName, lastName, dateOfBirth, gender, password, emailAddress);
+        this.salary = salary;
         this.id = id;
     }
 
-    public Customer() {
+    public Worker() {
 
     }
 
