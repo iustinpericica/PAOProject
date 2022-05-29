@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+
+  db:
+    image: postgres:13.6
+    environment:
+      POSTGRES_PASSWORD: iustin
+      POSTGRES_USER: iustin
+      POSTGRES_DB: food-delivery
+    restart: on-failure
+    healthcheck:
+      test: "psql -U iustin -d foo -c 'select 1;'"
+      interval: 1s
+      retries: 20
+    volumes:
+      - foo_volume:/var/lib/postgresql/data
+      # - ./db:/docker-entrypoint-initdb.d/
+    networks:
+      - foo_network
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: foo@bar.com
+      PGADMIN_DEFAULT_PASSWORD: iustin
+    ports:
+      - "1337:80"
+
+    volumes:
+      - foo_volume_pgadmin:/var/lib/pgadmin
+    networks:
+      - foo_network
+
+volumes:
+  foo_volume:
+  foo_volume_pgadmin:
+
+networks:
+  foo_network:
