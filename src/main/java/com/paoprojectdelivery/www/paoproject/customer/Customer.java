@@ -21,25 +21,25 @@ public class Customer {
     private Long id;
     private String name;
     private String email;
-    private LocalDate dob;
+    private String phoneNumber;
     private Integer age;
 
     public Customer() {
     }
 
-    public Customer(String name, String email, LocalDate dob, Integer age) {
+    public Customer(String name, String email, String phoneNumber, Integer age) {
         this.name = name;
         this.email = email;
-        this.dob = dob;
         this.age = age;
+        this.phoneNumber = phoneNumber;
     }
 
-    public Customer(Long id, String name, String email, LocalDate dob, Integer age) {
+    public Customer(Long id, String name, String email, String phoneNumber, Integer age) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.dob = dob;
         this.age = age;
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
@@ -48,7 +48,6 @@ public class Customer {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", dob=" + dob +
                 ", age=" + age +
                 '}';
     }
@@ -77,19 +76,19 @@ public class Customer {
         this.email = email;
     }
 
-    public LocalDate getDob() {
-        return dob;
-    }
-
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
-    }
-
     public Integer getAge() {
         return age;
     }
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

@@ -1,9 +1,7 @@
 package com.paoprojectdelivery.www.paoproject.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,13 +11,24 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
+    @Autowired
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+
     @GetMapping
     public List<Customer> getCustomers() {
         return customerService.getCustomers();
     }
 
-    @Autowired
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
+    @PostMapping
+    public void registerNewCustomer(@RequestBody Customer customer) {
+        customerService.addNewCustomer(customer);
     }
+
+    @DeleteMapping(path = {"{customerId}"})
+    public void deleteCustomer(@PathVariable("customerId") Long id) {
+        customerService.deleteCustomer(id);
+    }
+
 }
