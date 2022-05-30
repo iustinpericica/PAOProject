@@ -10,13 +10,13 @@ import java.time.LocalDate;
 public class Worker extends Person {
     @Id
     @SequenceGenerator(
-            name = "customer_seq",
-            sequenceName = "customer_seq",
+            name = "worker_seq",
+            sequenceName = "worker_seq",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "customer_seq"
+            generator = "worker_seq"
     )
     private Long id;
     private float salary;

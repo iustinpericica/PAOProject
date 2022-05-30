@@ -1,5 +1,7 @@
 package com.paoprojectdelivery.www.paoproject.order;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.paoprojectdelivery.www.paoproject.OrderItem.OrderItem;
 import com.paoprojectdelivery.www.paoproject.customer.Customer;
 import com.paoprojectdelivery.www.paoproject.worker.Worker;
@@ -39,6 +41,18 @@ public class Order {
 
     private OrderStatus orderStatus;
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", worker=" + worker +
+                ", orderItems=" + orderItems +
+                ", customer=" + customer +
+                ", orderDate=" + orderDate +
+                ", orderStatus=" + orderStatus +
+                '}';
+    }
+
     public Order(Worker worker, List<OrderItem> orderItems, Date orderDate, OrderStatus orderStatus, Customer customer) {
         this.worker = worker;
         this.orderItems = orderItems;
@@ -47,6 +61,7 @@ public class Order {
         this.customer = customer;
     }
 
+    @JsonManagedReference
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }

@@ -1,11 +1,11 @@
 package com.paoprojectdelivery.www.paoproject.OrderItem;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.paoprojectdelivery.www.paoproject.order.Order;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "order_item")
 public class OrderItem {
     @Id
     @SequenceGenerator(
@@ -19,8 +19,7 @@ public class OrderItem {
     )
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Order order;
 
     private Long priceUnit;
@@ -30,11 +29,12 @@ public class OrderItem {
     // TODO: Improve this: add reference to existing Table ( items )
     private String description;
 
-    public Order getOrder_id() {
+    @JsonBackReference
+    public Order getOrder() {
         return order;
     }
 
-    public void setOrder_id(Order order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
 
