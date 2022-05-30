@@ -31,4 +31,9 @@ public class CustomerController {
         customerService.deleteCustomer(id);
     }
 
+    @PutMapping
+    public void updateCustomer(@RequestBody Customer customer) {
+        customerService.updateCustomer(customer);
+    }
+
 }

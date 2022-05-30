@@ -1,9 +1,13 @@
 package com.paoprojectdelivery.www.paoproject.order;
 
+import com.paoprojectdelivery.www.paoproject.OrderItem.OrderItem;
+import com.paoprojectdelivery.www.paoproject.customer.Customer;
 import com.paoprojectdelivery.www.paoproject.worker.Worker;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "placed_order")
@@ -20,13 +24,52 @@ public class Order {
     )
     private Long id;
 
+    @ManyToOne
+    private Worker worker;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
+    private List<OrderItem> orderItems = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+
     private Date orderDate;
 
     private OrderStatus orderStatus;
 
-    @ManyToOne
-    @JoinColumn(name = "worker_id")
-    private Worker worker;
+    public Order(Worker worker, List<OrderItem> orderItems, Date orderDate, OrderStatus orderStatus, Customer customer) {
+        this.worker = worker;
+        this.orderItems = orderItems;
+        this.orderDate = orderDate;
+        this.orderStatus = orderStatus;
+        this.customer = customer;
+    }
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public Order() {
+    }
+
+    public Order(Long id) {
+        this.id = id;
+    }
+
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public Worker getWorker() {
         return worker;

@@ -30,4 +30,9 @@ public class OrderController {
         orderService.deleteOrder(id);
     }
 
+    @PutMapping
+    public void updateOrder(@RequestBody Order order) {
+        orderService.updateOrder(order);
+    }
+
 }

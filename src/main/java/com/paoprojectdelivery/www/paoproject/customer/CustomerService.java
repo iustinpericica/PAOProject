@@ -34,4 +34,8 @@ public class CustomerService {
             throw new IllegalStateException("student with id " + id + " does not exist");
         customerRepository.deleteById(id);
     }
+
+    public void updateCustomer(Customer customer) {
+        this.customerRepository.save(customer);
+    }
 }

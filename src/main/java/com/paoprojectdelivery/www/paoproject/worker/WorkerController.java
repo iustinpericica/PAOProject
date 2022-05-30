@@ -25,6 +25,11 @@ public class WorkerController {
         workerService.addNewWorker(worker);
     }
 
+    @PutMapping
+    public void updateWorker(@RequestBody Worker worker) {
+        workerService.updateWorker(worker);
+    }
+
     @DeleteMapping(path = {"{workerId}"})
     public void deleteWorker(@PathVariable("workerId") Long id) {
         workerService.deleteWorker(id);

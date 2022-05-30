@@ -28,4 +28,8 @@ public class OrderService {
             throw new IllegalStateException("student with id " + id + " does not exist");
         orderRepository.deleteById(id);
     }
+
+    public void updateOrder(Order order) {
+        orderRepository.save(order);
+    }
 }

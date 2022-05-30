@@ -35,4 +35,8 @@ public class WorkerService {
             throw new IllegalStateException("Worker with id " + id + " does not exist");
         workerRepository.deleteById(id);
     }
+
+    public void updateWorker(Worker worker) {
+        workerRepository.save(worker);
+    }
 }

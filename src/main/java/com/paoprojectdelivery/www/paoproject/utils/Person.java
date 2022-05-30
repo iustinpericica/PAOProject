@@ -1,9 +1,7 @@
 package com.paoprojectdelivery.www.paoproject.utils;
 
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDate;
-import java.util.Date;
 
 @MappedSuperclass
 public class Person {
